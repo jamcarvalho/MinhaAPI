@@ -65,7 +65,7 @@ tasks.jar {
 criar arquivo Procfile e colocar o caminho do JAR gerado no build do projeto
 -----------------------------------------------------------------------------
 
-web: java -jar build/libs/santander-dev-week-2023-0.0.1-SNAPSHOT.jar
+web: java -jar build/libs/minhaAPI-0.0.1-SNAPSHOT.jar
 
 alterar arquivo graddle-wrapper.properties por conta da versão suportada pelo railway
 -------------------------------------------------------------------------------------
