@@ -1,0 +1,82 @@
+// http://localhost:8080/swagger-ui/index.html
+
+{
+  "name": "Jorge",
+  "account": {
+    "number": "853.438.207-78",
+    "agency": "1234",
+    "balance": 157000.50,
+    "limit": 10000.00
+  },
+  "card": {
+    "number": "123.456.789-00",
+    "limit": 15000.00
+  },
+  "features": [
+    {
+      "icon": "string",
+      "description": "string"
+    }
+  ],
+  "news": [
+    {
+      "icon": "string",
+      "description": "string"
+    }
+  ]
+}
+
+Parametrização de BD
+--------------------
+
+-- Para criar BD
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+      
+-- Após criar BD executar com ddl-auto: validate
+      
+spring:
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+no arquivo build.gradle colocar o caminho da main application
+-------------------------------------------------------------
+
+tasks.jar {
+  manifest {
+    attributes["Main-Class"] = "com.estudo.santanderdevweek2023.Application"
+  }
+}
+
+criar arquivo Procfile e colocar o caminho do JAR gerado no build do projeto
+-----------------------------------------------------------------------------
+
+web: java -jar build/libs/santander-dev-week-2023-0.0.1-SNAPSHOT.jar
+
+alterar arquivo graddle-wrapper.properties por conta da versão suportada pelo railway
+-------------------------------------------------------------------------------------
+
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-bin.zip
+
+alterar para 
+
+distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.1-bin.zip
+
+deploy railway
+--------------
+
+sdw-2023-api-production-jorge-carvalho.up.railway.app
